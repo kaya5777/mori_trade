@@ -26,6 +26,8 @@ dependencies:
   shared_preferences: ^0.5.7
 
   share: ^0.6.4
+
+  fluttertoast: ^4.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

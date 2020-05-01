@@ -1,7 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:moritrade/bloc/tab_bloc.dart';
 import 'package:moritrade/page/tab_page.dart';
 import 'package:share/share.dart';
+import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class MainPage extends StatefulWidget {
 
@@ -75,13 +78,28 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
     );
   }
 
-  void sendMessage() {
+  void sendMessage() async {
     String message = "";
     message += "[ほしい]\n${blocs[0].createMessage()}";
     message += "[あげる]\n${blocs[1].createMessage()}";
     message += "#森";
     print(message);
-    Share.share(message);
+
+    if(kIsWeb) {
+      final data = ClipboardData(text: message);
+      await Clipboard.setData(data);
+      Fluttertoast.showToast(
+          msg: "クリップボードにコピーしました",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+    } else {
+      Share.share(message);
+    }
   }
 
   void showAlertDialog(BuildContext context) {

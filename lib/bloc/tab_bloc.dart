@@ -61,7 +61,7 @@ class TabBloc {
   String createMessage() {
     String value = "";
     _items.forEach((item) {
-      value = "$item\n";
+      value += "$item\n";
     });
     if(value == "") value = "なし\n";
     return value;
