@@ -2,8 +2,9 @@ import 'package:rxdart/subjects.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TabBloc {
-  List<String> _items = [];
   final String kind;
+
+  List<String> _items = [];
 
   final BehaviorSubject<List<String>> _itemController = BehaviorSubject<List<String>>.seeded([]);
 

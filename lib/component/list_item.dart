@@ -16,9 +16,7 @@ class ListItem extends StatelessWidget {
           Expanded(child: Text(this.title, style: TextStyle(fontSize: 16.0),)),
           IconButton(icon: Icon(Icons.delete),
             onPressed: () {
-              if(onRemove != null) {
-                onRemove(title);
-              }
+              this?.onRemove(title);
             },
           ),
         ],

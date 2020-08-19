@@ -40,6 +40,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
     super.initState();
     _tabController = TabController(length: tabs.length, vsync: this);
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +62,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
         children: <Widget>[
         FloatingActionButton(
           onPressed: () {
-            showAlertDialog(context);
+            showAlertDialog();
           },
           tooltip: 'addItem',
           child: Icon(Icons.add),
@@ -102,7 +103,7 @@ class _MainPageState extends State<MainPage> with SingleTickerProviderStateMixin
     }
   }
 
-  void showAlertDialog(BuildContext context) {
+  void showAlertDialog() {
     showDialog(
       context: context,
       barrierDismissible: false,
