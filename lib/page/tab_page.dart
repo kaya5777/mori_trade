@@ -12,7 +12,7 @@ class TabPage extends StatelessWidget {
     return StreamBuilder(
       stream: bloc.outItem,
       builder: (context, snapshot) {
-        if(snapshot.data == null || snapshot.data.length == 0) {
+        if(!snapshot.hasData || snapshot.data.length == 0) {
           return Center(child: Text("データがありません"),
           );
         }
